@@ -85,10 +85,10 @@ noIterationsPerMaxN = 50000
 logPoints = np.linspace(0, 4, numHorSec)
 allPoints = noIterationsPerMaxN * numHorSec
 
-fixed_n = [1, 10, 100, 1000, 10000]
+fixed_n = [0,1,2,3,4]
 
-for maxN in logPoints:
-    # for maxN in fixed_n:
+#for maxN in logPoints:
+for maxN in fixed_n:
     array = []
     type_dist = "loguniform"
     for i in range(0, noIterationsPerMaxN):
@@ -99,7 +99,7 @@ for maxN in logPoints:
         if type(point) != type(False):
             array.append(point)
 
-    saveData(array, "infL" + str(maxN))
+    saveData(array, "infL" + str(10**maxN))
     print("File: inf" + str(maxN) + ".txt created. no of points:" + str(len(array)))
     drawnPoints = drawnPoints + len(array)
     pointFraction = (drawnPoints * 100) / allPoints
