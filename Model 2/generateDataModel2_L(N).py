@@ -62,8 +62,7 @@ def getPoint(maxN=10):
 
     # astrophysicsProbability = RStarSample + fPlanets + nEnvironment  # use Nstar instead of rstarsample if no L
     # biotechnicalProbability = fInteligence + fCivilization + fLifeEks
-    biotechnicalProbability = sample_value(-10.76955, 0, dist)
-
+    biotechnicalProbability = sample_value(-11, -3, dist)
     # resitev = astrophysicsProbability + biotechnicalProbability   #calculates A = number of civ that have ever apperared in the world
     resitev = N - (astrophysicsProbability2 + biotechnicalProbability)  # calculates A = number of civ that have ever apperared in the world
 
@@ -71,12 +70,12 @@ def getPoint(maxN=10):
     E4 = E3 + fLife
     # E5 = E4 + fInteligence
 
-    # threshold if N values are very low
+    # threshold if N values are very 5lohttps://drive.google.com/drive/folders/1KFS5QMfw__qhXwCI_gDg8MtZKCieLpp3?fbclid=IwAR0CHSuTXxmH8Ge9q_NYNA6OsNWjgoI0NSDu-nLymRvLyjv61-xktdF4Fvww
     # if (resitev < 0):       #treshold from min possible solution
     # if (resitev < 0) or (resitev > 5):       #threshold min and L possible solution
-    glajenje = 0.4
-    if resitev < np.random.normal(0, glajenje) or resitev > np.random.normal(5, glajenje):  # bokal?
-        return False
+    #glajenje = 0.4
+    #if resitev < np.random.normal(0, glajenje) or resitev > np.random.normal(5, glajenje):  # bokal?
+    #    return False
 
     # x.append(astrophysicsProbability) #from our distribution calculated distribution
     # y.append(astrophysicsProbability2)  #from our distribution
@@ -89,15 +88,15 @@ noIterationsPerMaxN = 20000
 logPoints = np.linspace(0, 4, numHorSec)
 allPoints = noIterationsPerMaxN * numHorSec
 
-fixed_n = [1, 10, 100, 1000, 10000]
+fixed_n = [0,1,2,3,4]
 
 for maxN in logPoints:
-    # for maxN in fixed_n:
+    #for maxN in fixed_n:
     array = []
     for i in range(0, noIterationsPerMaxN):
         point = getPoint(maxN)
-        if type(point) != type(False):
-            array.append(point)
+        #if type(point) != type(False):
+        array.append(point)
 
     saveData(array, "inf" + str(maxN))
     print("File: inf" + str(maxN) + ".txt created. no of points:" + str(len(array)))
